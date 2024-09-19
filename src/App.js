@@ -6,11 +6,12 @@ import CraftRoom from "./CraftRoom";
 import FishTank from "./FishTank";
 import Kitchen from "./Kitchen";
 import Vault from "./Vault";
+import Login from "./Login";
 
 const myRoutes = createBrowserRouter([
     {
         path: "/",
-        element: <login />,
+        element: <Login />,
     },
     {
         path: "/craftRoom",
@@ -63,36 +64,33 @@ function App() {
                                 <a
                                     className="nav-link active"
                                     aria-current="page"
-                                    href="index.html"
+                                    href="/CraftRoom"
                                 >
                                     Craft Room
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="kitchen.html">
+                                <a className="nav-link" href="/Kitchen">
                                     Kitchen
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="fishTank.html">
+                                <a className="nav-link" href="/FishTank">
                                     Fish Tank
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="boilerRoom.html">
+                                <a className="nav-link" href="/BoilerRoom">
                                     Boiler Room
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="vault.html">
+                                <a className="nav-link" href="/Vault">
                                     Vault
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a
-                                    className="nav-link"
-                                    href="bulletinBoard.html"
-                                >
+                                <a className="nav-link" href="/BulletinBoard">
                                     Bulletin Board
                                 </a>
                             </li>
@@ -100,6 +98,7 @@ function App() {
                     </div>
                 </div>
             </nav>
+            <RouterProvider router={myRoutes} />
         </div>
     );
 }

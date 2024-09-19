@@ -1,5 +1,5 @@
 const Vault = () => {
-    return <div></div>;
+    return <div>vault</div>;
 };
 
 export default Vault;

@@ -1,5 +1,5 @@
 const FishTank = () => {
-    return <div></div>;
+    return <div>fish tank</div>;
 };
 
 export default FishTank;

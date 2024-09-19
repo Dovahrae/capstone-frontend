@@ -1,5 +1,5 @@
 const CraftRoom = () => {
-    return <div></div>;
+    return <div>craft room</div>;
 };
 
 export default CraftRoom;

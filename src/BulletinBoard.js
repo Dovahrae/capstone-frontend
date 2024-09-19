@@ -1,5 +1,5 @@
 const BulletinBoard = () => {
-    return <div></div>;
+    return <div>bulletin board</div>;
 };
 
 export default BulletinBoard;

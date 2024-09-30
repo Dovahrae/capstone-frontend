@@ -1,178 +1,70 @@
 import { useState } from "react";
 
 const Kitchen = () => {
-    // State to keep track of selected items for each bundle
-    const [selectedItems, setSelectedItems] = useState({
-        springCrops: null,
-        summerCrops: null,
-        fallCrops: null,
-        qualityCrops: null,
-        animalBundle: null,
-        artisanBundle: null,
-    });
-
-    // Handle selection for each item
-    const handleSelect = (bundle, index) => {
-        setSelectedItems((prevState) => ({
-            ...prevState,
-            [bundle]: index,
-        }));
-    };
-
     return (
         <div>
             <div>
                 <h5>Spring Crops</h5>
-                <div className="row" id="springCrops">
-                    {["Parsnip", "Green Bean", "Cauliflower", "Potato"].map(
-                        (item, index) => (
-                            <div
-                                key={index}
-                                className={`col ${
-                                    selectedItems.springCrops === index
-                                        ? "selected"
-                                        : ""
-                                }`}
-                                onClick={() =>
-                                    handleSelect("springCrops", index)
-                                }
-                                style={{ cursor: "pointer" }}
-                            >
-                                {item}
-                            </div>
-                        )
-                    )}
+                <div class="row" id="springCrops">
+                    <div class="col">Parsnip</div>
+                    <div class="col">Green Bean</div>
+                    <div class="col">Cauliflower</div>
+                    <div class="col">Potato</div>
                 </div>
             </div>
-
             <div>
                 <h5>Summer Crops</h5>
-                <div className="row" id="summerCrops">
-                    {["Tomato", "Hot Pepper", "Blueberry", "Melon"].map(
-                        (item, index) => (
-                            <div
-                                key={index}
-                                className={`col ${
-                                    selectedItems.summerCrops === index
-                                        ? "selected"
-                                        : ""
-                                }`}
-                                onClick={() =>
-                                    handleSelect("summerCrops", index)
-                                }
-                                style={{ cursor: "pointer" }}
-                            >
-                                {item}
-                            </div>
-                        )
-                    )}
+                <div class="row" id="summerCrops">
+                    <div class="col">Tomato</div>
+                    <div class="col">Hot Pepper</div>
+                    <div class="col">Blueberry</div>
+                    <div class="col">Melon</div>
                 </div>
             </div>
-
             <div>
                 <h5>Fall Crops</h5>
-                <div className="row" id="fallCrops">
-                    {["Corn", "Eggplant", "Pumpkin", "Yam"].map(
-                        (item, index) => (
-                            <div
-                                key={index}
-                                className={`col ${
-                                    selectedItems.fallCrops === index
-                                        ? "selected"
-                                        : ""
-                                }`}
-                                onClick={() => handleSelect("fallCrops", index)}
-                                style={{ cursor: "pointer" }}
-                            >
-                                {item}
-                            </div>
-                        )
-                    )}
+                <div class="row" id="fallCrops">
+                    <div class="col">Corn</div>
+                    <div class="col">Eggplant</div>
+                    <div class="col">Pumpkin</div>
+                    <div class="col">Yam</div>
                 </div>
             </div>
-
             <div>
                 <h5>Quality Crops</h5>
-                <div className="row" id="qualityCrops">
-                    {[
-                        "Gold Star Parsnips (5)",
-                        "Gold Star Melons (5)",
-                        "Gold Star Pumpkins (5)",
-                        "Gold Star Corn (5)",
-                    ].map((item, index) => (
-                        <div
-                            key={index}
-                            className={`col ${
-                                selectedItems.qualityCrops === index
-                                    ? "selected"
-                                    : ""
-                            }`}
-                            onClick={() => handleSelect("qualityCrops", index)}
-                            style={{ cursor: "pointer" }}
-                        >
-                            {item}
-                        </div>
-                    ))}
+                <div class="row" id="qualityCrops">
+                    <div class="col">Gold Star Parsnips (5)</div>
+                    <div class="col">Gold Star Melons (5)</div>
+                    <div class="col">Gold Star Pumpkins (5)</div>
+                    <div class="col">Gold Star Corn (5)</div>
                 </div>
             </div>
-
             <div>
                 <h5>Animal Bundle</h5>
-                <div className="row" id="animalBundle">
-                    {[
-                        "Large Milk",
-                        "Large Brown Egg",
-                        "Large White Egg",
-                        "Large Goat Milk",
-                        "Wool",
-                        "Duck Egg",
-                    ].map((item, index) => (
-                        <div
-                            key={index}
-                            className={`col ${
-                                selectedItems.animalBundle === index
-                                    ? "selected"
-                                    : ""
-                            }`}
-                            onClick={() => handleSelect("animalBundle", index)}
-                            style={{ cursor: "pointer" }}
-                        >
-                            {item}
-                        </div>
-                    ))}
+                <div class="row" id="animalBundle">
+                    <div class="col">Large Milk</div>
+                    <div class="col">Large Brown Egg</div>
+                    <div class="col">Large White Egg</div>
+                    <div class="col">Large Goat Milk</div>
+                    <div class="col">Wool</div>
+                    <div class="col">Duck Egg</div>
                 </div>
             </div>
-
             <div>
                 <h5>Artisan Bundle</h5>
-                <div className="row" id="artisanBundle">
-                    {[
-                        "Truffle Oil",
-                        "Cloth",
-                        "Goat Cheese",
-                        "Cheese",
-                        "Honey",
-                        "Jelly",
-                        "Apple",
-                        "Apricot",
-                        "Orange",
-                        "Peach",
-                        "Pomegranate",
-                        "Cherry",
-                    ].map((item, index) => (
-                        <div
-                            key={index}
-                            className={`col ${
-                                selectedItems.artisanBundle === index
-                                    ? "selected"
-                                    : ""
-                            }`}
-                            onClick={() => handleSelect("artisanBundle", index)}
-                            style={{ cursor: "pointer" }}
-                        >
-                            {item}
-                        </div>
-                    ))}
+                <div class="row" id="artisanBundle">
+                    <div class="col">Truffle Oil</div>
+                    <div class="col">Cloth</div>
+                    <div class="col">Goat Cheese</div>
+                    <div class="col">Cheese</div>
+                    <div class="col">Honey</div>
+                    <div class="col">Jelly</div>
+                    <div class="col">Apple</div>
+                    <div class="col">Apricot</div>
+                    <div class="col">Orange</div>
+                    <div class="col">Peach</div>
+                    <div class="col">Pomegranate</div>
+                    <div class="col">Cherry</div>
                 </div>
             </div>
         </div>

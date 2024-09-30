@@ -1,149 +1,54 @@
 import { useState } from "react";
 
 const BulletinBoard = () => {
-    // State to keep track of selected items for each bundle
-    const [selectedItems, setSelectedItems] = useState({
-        chefBundle: null,
-        dyeBundle: null,
-        fieldResearch: null,
-        fodderBundle: null,
-        enchanterBundle: null,
-    });
-
-    // Handle selection for each item
-    const handleSelect = (bundle, index) => {
-        setSelectedItems((prevState) => ({
-            ...prevState,
-            [bundle]: index,
-        }));
-    };
-
     return (
         <div>
             <div>
                 <h5>Chef's Bundle</h5>
-                <div className="row" id="chefBundle">
-                    {[
-                        "Maple Syrup",
-                        "Fiddlehead Fern",
-                        "Truffle",
-                        "Poppy",
-                        "Maki Roll",
-                        "Fried Egg",
-                    ].map((item, index) => (
-                        <div
-                            key={index}
-                            className={`col ${
-                                selectedItems.chefBundle === index
-                                    ? "selected"
-                                    : ""
-                            }`}
-                            onClick={() => handleSelect("chefBundle", index)}
-                            style={{ cursor: "pointer" }}
-                        >
-                            {item}
-                        </div>
-                    ))}
+                <div class="row" id="chefBundle">
+                    <div class="col">Maple Syrup</div>
+                    <div class="col">Fiddlehead Fern</div>
+                    <div class="col">Truffle</div>
+                    <div class="col">Poppy</div>
+                    <div class="col">Maki Roll</div>
+                    <div class="col">Fried Egg</div>
                 </div>
             </div>
-
             <div>
                 <h5>Dye Bundle</h5>
-                <div className="row" id="dyeBundle">
-                    {[
-                        "Red Mushroom",
-                        "Sea Urchin",
-                        "Sunflower",
-                        "Duck Feather",
-                        "Aquamarine",
-                        "Red Cabbage",
-                    ].map((item, index) => (
-                        <div
-                            key={index}
-                            className={`col ${
-                                selectedItems.dyeBundle === index
-                                    ? "selected"
-                                    : ""
-                            }`}
-                            onClick={() => handleSelect("dyeBundle", index)}
-                            style={{ cursor: "pointer" }}
-                        >
-                            {item}
-                        </div>
-                    ))}
+                <div class="row" id="dyeBundle">
+                    <div class="col">Red Mushroom</div>
+                    <div class="col">Sea Urchin</div>
+                    <div class="col">Sunflower</div>
+                    <div class="col">Duck Feather</div>
+                    <div class="col">Aquamarine</div>
+                    <div class="col">Red Cabbage</div>
                 </div>
             </div>
-
             <div>
                 <h5>Field Research Bundle</h5>
-                <div className="row" id="fieldResearch">
-                    {[
-                        "Common Mushroom",
-                        "Wild Plum",
-                        "Hazelnut",
-                        "Blackberry",
-                    ].map((item, index) => (
-                        <div
-                            key={index}
-                            className={`col ${
-                                selectedItems.fieldResearch === index
-                                    ? "selected"
-                                    : ""
-                            }`}
-                            onClick={() => handleSelect("fieldResearch", index)}
-                            style={{ cursor: "pointer" }}
-                        >
-                            {item}
-                        </div>
-                    ))}
+                <div class="row" id="fieldResearch">
+                    <div class="col">Common Mushroom</div>
+                    <div class="col">Wild Plum</div>
+                    <div class="col">Hazelnut</div>
+                    <div class="col">Blackberry</div>
                 </div>
             </div>
-
             <div>
                 <h5>Fodder Bundle</h5>
-                <div className="row" id="fodderBundle">
-                    {["Wheat (10)", "Hay (10)", "Apple (3)"].map(
-                        (item, index) => (
-                            <div
-                                key={index}
-                                className={`col ${
-                                    selectedItems.fodderBundle === index
-                                        ? "selected"
-                                        : ""
-                                }`}
-                                onClick={() =>
-                                    handleSelect("fodderBundle", index)
-                                }
-                                style={{ cursor: "pointer" }}
-                            >
-                                {item}
-                            </div>
-                        )
-                    )}
+                <div class="row" id="fodderBundle">
+                    <div class="col">Wheat (10)</div>
+                    <div class="col">Hay (10)</div>
+                    <div class="col">Apple (3)</div>
                 </div>
             </div>
-
             <div>
                 <h5>Enchanter's Bundle</h5>
-                <div className="row" id="enchanterBundle">
-                    {["Oak Resin", "Wine", "Rabbit's Foot", "Pomegranate"].map(
-                        (item, index) => (
-                            <div
-                                key={index}
-                                className={`col ${
-                                    selectedItems.enchanterBundle === index
-                                        ? "selected"
-                                        : ""
-                                }`}
-                                onClick={() =>
-                                    handleSelect("enchanterBundle", index)
-                                }
-                                style={{ cursor: "pointer" }}
-                            >
-                                {item}
-                            </div>
-                        )
-                    )}
+                <div class="row" id="enchanterBundle">
+                    <div class="col">Oak Resin</div>
+                    <div class="col">Wine</div>
+                    <div class="col">Rabbit's Foot</div>
+                    <div class="col">Pomegranate</div>
                 </div>
             </div>
         </div>

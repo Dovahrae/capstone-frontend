@@ -1,9 +1,197 @@
 import { useState } from "react";
+import "./App.css";
+
+let ToggleButton = () => {
+    const springValues = ["Parsnip", "Green Bean", "Cauliflower", "Potato"];
+    const summerValues = ["Tomato", "Hot Pepper", "Blueberry", "Melon"];
+    const fallValues = ["Corn", "Eggplant", "Pumpkin", "Yam"];
+    const qualityValues = [
+        "Gold quality Parsnip (5)",
+        "Gold quality Melon (5)",
+        "Gold quality Pumpkin (5)",
+        "Gold quality Corn (5)",
+    ];
+    const animalValues = [
+        "Large Milk",
+        "Large Egg",
+        "Large Brown Egg",
+        "Large Goat Milk",
+        "Wool",
+        "Duck Egg",
+    ];
+    const artisanValues = [
+        "Truffle Oil",
+        "Cloth",
+        "Goat Cheese",
+        "Cheese",
+        "Honey",
+        "Jelly",
+        "Apple",
+        "Apricot",
+        "Orange",
+        "Peach",
+        "Pomegranate",
+        "Cherry",
+    ];
+
+    const [springSelected, setSpringSelected] = useState(
+        new Array(springValues.length).fill(false)
+    );
+    const [summerSelected, setSummerSelected] = useState(
+        new Array(summerValues.length).fill(false)
+    );
+    const [fallSelected, setFallSelected] = useState(
+        new Array(fallValues.length).fill(false)
+    );
+    const [qualitySelected, setQualitySelected] = useState(
+        new Array(qualityValues.length).fill(false)
+    );
+    const [animalSelected, setAnimalSelected] = useState(
+        new Array(animalValues.length).fill(false)
+    );
+    const [artisanSelected, setArtisanSelected] = useState(
+        new Array(artisanValues.length).fill(false)
+    );
+
+    const handleToggle = (index, group, setGroup) => {
+        const updatedSelection = [...group];
+        updatedSelection[index] = !updatedSelection[index];
+        setGroup(updatedSelection);
+    };
+
+    return (
+        <div>
+            <div>
+                <h5>Spring Crops Bundle</h5>
+                {springValues.map((value, index) => (
+                    <button
+                        key={index}
+                        onClick={() =>
+                            handleToggle(
+                                index,
+                                springSelected,
+                                setSpringSelected
+                            )
+                        }
+                        className={`button ${
+                            springSelected[index] ? "selected" : ""
+                        }`}
+                    >
+                        {value}
+                    </button>
+                ))}
+            </div>
+            <div>
+                <h5>Summer Crops Bundle</h5>
+                {summerValues.map((value, index) => (
+                    <button
+                        key={index}
+                        onClick={() =>
+                            handleToggle(
+                                index,
+                                summerSelected,
+                                setSummerSelected
+                            )
+                        }
+                        className={`button ${
+                            summerSelected[index] ? "selected" : ""
+                        }`}
+                    >
+                        {value}
+                    </button>
+                ))}
+            </div>
+            <div>
+                <h5>Fall Crops Bundle</h5>
+                {fallValues.map((value, index) => (
+                    <button
+                        key={index}
+                        onClick={() =>
+                            handleToggle(index, fallSelected, setFallSelected)
+                        }
+                        className={`button ${
+                            fallSelected[index] ? "selected" : ""
+                        }`}
+                    >
+                        {value}
+                    </button>
+                ))}
+            </div>
+            <div>
+                <h5>Quality Crops Bundle</h5>
+                {qualityValues.map((value, index) => (
+                    <button
+                        key={index}
+                        onClick={() =>
+                            handleToggle(
+                                index,
+                                qualitySelected,
+                                setQualitySelected
+                            )
+                        }
+                        className={`button ${
+                            qualitySelected[index] ? "selected" : ""
+                        }`}
+                    >
+                        {value}
+                    </button>
+                ))}
+            </div>
+            <div>
+                <h5>Animal Bundle</h5>
+                {animalValues.map((value, index) => (
+                    <button
+                        key={index}
+                        onClick={() =>
+                            handleToggle(
+                                index,
+                                animalSelected,
+                                setAnimalSelected
+                            )
+                        }
+                        className={`button ${
+                            animalSelected[index] ? "selected" : ""
+                        }`}
+                    >
+                        {value}
+                    </button>
+                ))}
+            </div>
+            <div>
+                <h5>Artisan Bundle</h5>
+                {artisanValues.map((value, index) => (
+                    <button
+                        key={index}
+                        onClick={() =>
+                            handleToggle(
+                                index,
+                                artisanSelected,
+                                setArtisanSelected
+                            )
+                        }
+                        className={`button ${
+                            artisanSelected[index] ? "selected" : ""
+                        }`}
+                    >
+                        {value}
+                    </button>
+                ))}
+            </div>
+        </div>
+    );
+};
 
 const Kitchen = () => {
     return (
         <div>
-            <div>
+            <ToggleButton />
+        </div>
+    );
+};
+
+export default Kitchen;
+
+/* <div>
                 <h5>Spring Crops</h5>
                 <div class="row" id="springCrops">
                     <div class="col">Parsnip</div>
@@ -66,9 +254,4 @@ const Kitchen = () => {
                     <div class="col">Pomegranate</div>
                     <div class="col">Cherry</div>
                 </div>
-            </div>
-        </div>
-    );
-};
-
-export default Kitchen;
+            </div> */

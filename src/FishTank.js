@@ -1,9 +1,167 @@
 import { useState } from "react";
+import "./App.css";
+
+let ToggleButton = () => {
+    const riverValues = ["Sunfish", "Catfish", "Shad", "Tiger Trout"];
+    const lakeValues = ["Largemouth Bass", "Carp", "Bullhead", "Sturgeon"];
+    const oceanValues = ["Sardine", "Tuna", "Red Snapper", "Tilapia"];
+    const nightValues = ["Walleye", "Bream", "Eel"];
+    const crabValues = [
+        "Lobster",
+        "Crayfish",
+        "Crab",
+        "Cockle",
+        "Mussel",
+        "Shrimp",
+        "Snail",
+        "Periwinkle",
+        "Oyster",
+        "Clam",
+    ];
+    const specialtyValues = ["Pufferfish", "Ghostfish", "Sandfish", "Woodskip"];
+
+    const [riverSelected, setRiverSelected] = useState(
+        new Array(riverValues.length).fill(false)
+    );
+    const [lakeSelected, setLakeSelected] = useState(
+        new Array(lakeValues.length).fill(false)
+    );
+    const [oceanSelected, setOceanSelected] = useState(
+        new Array(oceanValues.length).fill(false)
+    );
+    const [nightSelected, setNightSelected] = useState(
+        new Array(nightValues.length).fill(false)
+    );
+    const [crabSelected, setCrabSelected] = useState(
+        new Array(crabValues.length).fill(false)
+    );
+    const [specialtySelected, setSpecialtySelected] = useState(
+        new Array(specialtyValues.length).fill(false)
+    );
+
+    const handleToggle = (index, group, setGroup) => {
+        const updatedSelection = [...group];
+        updatedSelection[index] = !updatedSelection[index];
+        setGroup(updatedSelection);
+    };
+
+    return (
+        <div>
+            <div>
+                <h5>River Fish Bundle</h5>
+                {riverValues.map((value, index) => (
+                    <button
+                        key={index}
+                        onClick={() =>
+                            handleToggle(index, riverSelected, setRiverSelected)
+                        }
+                        className={`button ${
+                            riverSelected[index] ? "selected" : ""
+                        }`}
+                    >
+                        {value}
+                    </button>
+                ))}
+            </div>
+            <div>
+                <h5>Lake Fish Bundle</h5>
+                {lakeValues.map((value, index) => (
+                    <button
+                        key={index}
+                        onClick={() =>
+                            handleToggle(index, lakeSelected, setLakeSelected)
+                        }
+                        className={`button ${
+                            lakeSelected[index] ? "selected" : ""
+                        }`}
+                    >
+                        {value}
+                    </button>
+                ))}
+            </div>
+            <div>
+                <h5>Ocean Fish Bundle</h5>
+                {oceanValues.map((value, index) => (
+                    <button
+                        key={index}
+                        onClick={() =>
+                            handleToggle(index, oceanSelected, setOceanSelected)
+                        }
+                        className={`button ${
+                            oceanSelected[index] ? "selected" : ""
+                        }`}
+                    >
+                        {value}
+                    </button>
+                ))}
+            </div>
+            <div>
+                <h5>Night Fishing Bundle</h5>
+                {nightValues.map((value, index) => (
+                    <button
+                        key={index}
+                        onClick={() =>
+                            handleToggle(index, nightSelected, setNightSelected)
+                        }
+                        className={`button ${
+                            nightSelected[index] ? "selected" : ""
+                        }`}
+                    >
+                        {value}
+                    </button>
+                ))}
+            </div>
+            <div>
+                <h5>Crab Pot Bundle</h5>
+                {crabValues.map((value, index) => (
+                    <button
+                        key={index}
+                        onClick={() =>
+                            handleToggle(index, crabSelected, setCrabSelected)
+                        }
+                        className={`button ${
+                            crabSelected[index] ? "selected" : ""
+                        }`}
+                    >
+                        {value}
+                    </button>
+                ))}
+            </div>
+            <div>
+                <h5>Specialty Fish Bundle</h5>
+                {specialtyValues.map((value, index) => (
+                    <button
+                        key={index}
+                        onClick={() =>
+                            handleToggle(
+                                index,
+                                specialtySelected,
+                                setSpecialtySelected
+                            )
+                        }
+                        className={`button ${
+                            specialtySelected[index] ? "selected" : ""
+                        }`}
+                    >
+                        {value}
+                    </button>
+                ))}
+            </div>
+        </div>
+    );
+};
 
 const FishTank = () => {
     return (
         <div>
-            <div>
+            <ToggleButton />
+        </div>
+    );
+};
+
+export default FishTank;
+
+/* <div>
                 <h5>River Fish</h5>
                 <div class="row" id="riverFish">
                     <div class="col">Sunfish</div>
@@ -61,9 +219,4 @@ const FishTank = () => {
                     <div class="col">Oyster</div>
                     <div class="col">Clam</div>
                 </div>
-            </div>
-        </div>
-    );
-};
-
-export default FishTank;
+            </div> */

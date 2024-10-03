@@ -1,34 +1,56 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 let ToggleButton = () => {
-    const [isSelected, setIsSelected] = useState([false]);
+    const [statuses, setStatuses] = useState([]);
 
-    const handleToggle = (index) => {
-        const updatedSelection = [...isSelected];
+    useEffect(() => {
+        const makeAPICall = async () => {
+            const res = await fetch(
+                `http://localhost:3001/toggleStatus/vault/${window.localStorage.getItem(
+                    "userID"
+                )}`
+            );
+            const data = await res.json();
+            setStatuses(data.statuses);
+        };
+        makeAPICall();
+    }, []);
 
-        if (updatedSelection[index]) {
-            updatedSelection[index] = false;
-        } else {
-            updatedSelection[index] = true;
-        }
-
-        setIsSelected(updatedSelection);
+    const handleToggle = async (item) => {
+        const res = await fetch(`http://localhost:3001/toggleStatus`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                userId: window.localStorage.getItem("userID"),
+                room: "vault",
+                item,
+            }),
+        });
+        const data = await res.json();
+        setStatuses(data.statuses);
     };
 
     const values = ["$2,500", "$5,000", "$10,000", "$25,000"];
 
     return (
         <div>
-            {values.map((value, index) => (
-                <button
-                    key={index}
-                    onClick={() => handleToggle(index)}
-                    className={`button ${isSelected[index] ? "selected" : ""}`}
-                >
-                    {value}
-                </button>
-            ))}
+            {values.map((value, index) => {
+                const matchingStatus = statuses.find(
+                    (status) => status.item === value
+                );
+                return (
+                    <button
+                        key={index}
+                        onClick={() => handleToggle(value)}
+                        className={`button ${matchingStatus ? "selected" : ""}`}
+                    >
+                        {value}
+                    </button>
+                );
+            })}
         </div>
     );
 };

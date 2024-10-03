@@ -7,11 +7,12 @@ import FishTank from "./FishTank";
 import Kitchen from "./Kitchen";
 import Vault from "./Vault";
 import Login from "./Login";
+import Home from "./Home";
 
 const myRoutes = createBrowserRouter([
     {
         path: "/",
-        element: <Login />,
+        element: <Home />,
     },
     {
         path: "/craftRoom",
@@ -36,6 +37,10 @@ const myRoutes = createBrowserRouter([
     {
         path: "/vault",
         element: <Vault />,
+    },
+    {
+        path: "/login",
+        element: <Login />,
     },
 ]);
 
@@ -92,6 +97,11 @@ function App() {
                             <li className="nav-item">
                                 <a className="nav-link" href="/BulletinBoard">
                                     Bulletin Board
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/Login">
+                                    Login
                                 </a>
                             </li>
                         </ul>

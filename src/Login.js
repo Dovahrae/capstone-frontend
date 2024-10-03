@@ -1,36 +1,71 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const ToggleButton = () => {
-    // State to manage whether the button is selected
-    const [isSelected, setIsSelected] = useState(false);
+const Login = () => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
-    // Handle button click
-    const handleToggle = () => {
-        setIsSelected((prev) => !prev);
+    const loginFormSubmitted = async (event) => {
+        event.preventDefault();
+        console.log("Login for submitted");
+        console.log(username, password);
+
+        const res = await fetch(`http://localhost:3001/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email: username, password }),
+        });
+        const data = await res.json();
+        if (data.error) {
+            setError(data.message);
+        } else {
+            window.localStorage.setItem("loggedIn", "yes");
+            window.localStorage.setItem("userID", data.userID);
+            navigate("/");
+        }
     };
 
     return (
-        <button
-            onClick={handleToggle}
-            style={{
-                backgroundColor: isSelected ? "green" : "lightgray", // Change color based on selection
-                color: "white",
-                border: "none",
-                padding: "10px 20px",
-                cursor: "pointer",
-                transition: "background-color 0.3s", // Smooth transition for color change
-            }}
-        >
-            Testing
-        </button>
-    );
-};
-
-const Login = () => {
-    return (
-        <div>
-            <h2>Login</h2>
-            <ToggleButton />{" "}
+        <div className="container">
+            <h1>Login</h1>
+            <form onSubmit={loginFormSubmitted}>
+                <div className="mb-3">
+                    <label htmlFor="username" className="form-label">
+                        Username
+                    </label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="username"
+                        value={username}
+                        onChange={(evt) => {
+                            setUsername(evt.target.value);
+                        }}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="password" className="form-label">
+                        Password
+                    </label>
+                    <input
+                        type="password"
+                        className="form-control"
+                        id="password"
+                        value={password}
+                        onChange={(evt) => {
+                            setPassword(evt.target.value);
+                        }}
+                    />
+                </div>
+                <button className="btn btn-primary" type="submit">
+                    Login
+                </button>
+                <p style={{ color: "red" }}>{error}</p>
+            </form>
         </div>
     );
 };

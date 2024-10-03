@@ -32,6 +32,22 @@ let ToggleButton = () => {
         const data = await res.json();
         setStatuses(data.statuses);
     };
+    // start deleting here if it breaks
+    const handleDelete = async (item) => {
+        const res = await fetch(`http://localhost:3001/deleteStatus`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                userId: window.localStorage.getItem("userID"),
+                room: "vault",
+                item,
+            }),
+        });
+        const data = await res.json();
+        setStatuses(data.statuses);
+    };
 
     const values = ["$2,500", "$5,000", "$10,000", "$25,000"];
 
